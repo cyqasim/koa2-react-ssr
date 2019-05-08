@@ -1,6 +1,6 @@
 "printWidth": 120
 "tabWidth": 4
-"parser": "babylon"
+"parser": "babel"
 "trailingComma": "none"
 "jsxBracketSameLine": false
 "semi": true
