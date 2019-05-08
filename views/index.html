@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title> </title>
+    <meta name="keywords" content="家具拆装,家具配送,家具安装,家具维修"/>
+    <meta name="description" content="万师傅是全国专业家居售后服务网站,提供【家具】【晾衣架】【灯具】【卫浴】【 墙纸地毯】的拆装,搬运等服务担保交易;师傅覆盖全国600多个城市,快速,便捷,省钱,有保障！"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0"/>
+    {% for css in cssArr %}
+    <link rel="stylesheet" href="{{ css }}"/>
+    {% endfor %}
+    <script type="text/javascript">
+        window.REDUX_STATE  = {{ state | safe }};
+    </script>
+</head>
+<body style="-webkit-overflow-scrolling: touch;overflow-y: scroll;">
+    <div id="root" class="full-page">
+        {{ body | safe }}
+    </div>
+
+    {% for js in jsArr %}
+    <script src="{{ js }}" type="text/javascript"></script>
+    {% endfor %}
+</body>
+</html>
