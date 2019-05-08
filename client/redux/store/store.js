@@ -14,13 +14,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 export default function configureStore(initialState) {
-    const store = createStore(
-        reducers,
-        initialState,
-        compose(
-            applyMiddleware(...middlewares)
-        )
-    );
+    const store = createStore(reducers, initialState, compose(applyMiddleware(...middlewares)));
 
-    return store
+    return store;
 }

@@ -1,7 +1,7 @@
 require('babel-register')({
-    extensions: [".jsx", ".js"],
-    plugins: ["ignore-html-and-css-imports"],
+    extensions: ['.jsx', '.js'],
+    plugins: ['ignore-html-and-css-imports'],
     cache: false
 });
 
-module.exports = require('./server')
+module.exports = require('./server');

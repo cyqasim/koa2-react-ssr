@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import {Provider} from 'react-redux'
+import { Provider } from 'react-redux';
 import configureStore from './redux/store/store';
-import App from "./app";
+import App from './app';
 import Loadable from 'react-loadable';
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom';
 const initialState = window.REDUX_STATE;
 delete window.REDUX_STATE;
 
@@ -20,15 +20,15 @@ const render = Component => {
                     <Component />
                 </BrowserRouter>
             </Provider>,
-            document.getElementById('root'),
-        )
+            document.getElementById('root')
+        );
     });
 };
 
 render(App);
 
 if (module.hot) {
-    module.hot.accept('./app', () => { render(App) })
+    module.hot.accept('./app', () => {
+        render(App);
+    });
 }
-
-

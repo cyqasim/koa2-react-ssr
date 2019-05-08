@@ -1,5 +1,5 @@
-const path = require("path");
-const webpack = require("webpack");
+const path = require('path');
+const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -26,10 +26,7 @@ const client = {
     },
     // 根据内容
     resolve: {
-        modules: [
-            'client',
-            'node_modules'
-        ],
+        modules: ['client', 'node_modules'],
         extensions: ['.js', '.jsx']
     },
     // 关闭警告提示
@@ -43,60 +40,61 @@ const client = {
                     {
                         loader: MiniCssExtractPlugin.loader
                     },
-                    {loader: 'css-loader', options: {
+                    {
+                        loader: 'css-loader',
+                        options: {
                             importLoaders: 1,
                             localIdentName: '[name].css'
-                        }},
-                    {loader: 'sass-loader'},
-                    {loader: 'postcss-loader'}
+                        }
+                    },
+                    { loader: 'sass-loader' },
+                    { loader: 'postcss-loader' }
                 ]
             },
             // 图片 loader
             {
                 // 匹配后缀
-                test:/\.(png|gif|jpe?g|svg)/,
-                use:[{
-                    // loader
-                    loader:'url-loader',
-                    options:{
-                        // 小于500B的文件打成Base64的格式，写入JS
-                        limit: 500,
-                        // 打包图片文件夹
-                        outputPath:'images',
-                        name: '[name].[ext]?[hash:6]',
+                test: /\.(png|gif|jpe?g|svg)/,
+                use: [
+                    {
+                        // loader
+                        loader: 'url-loader',
+                        options: {
+                            // 小于500B的文件打成Base64的格式，写入JS
+                            limit: 500,
+                            // 打包图片文件夹
+                            outputPath: 'images',
+                            name: '[name].[ext]?[hash:6]'
+                        }
+                    },
+                    {
+                        // 压缩图片
+                        loader: 'image-webpack-loader'
                     }
-                }, {
-                    // 压缩图片
-                    loader:'image-webpack-loader'
-                }]
+                ]
             },
             // html图片引用 loader
             {
                 test: /\.(htm|html)$/i,
-                use:[ 'html-withimg-loader']
+                use: ['html-withimg-loader']
             },
             // js babel loader
             {
-                test:/\.(jsx|js)$/,
-                include: [
-                    rootDir + '/client',
-                ],
-                use:{
-                    loader:'babel-loader'
+                test: /\.(jsx|js)$/,
+                include: [rootDir + '/client'],
+                use: {
+                    loader: 'babel-loader'
                 },
                 // 忽略文件
-                exclude: '/node_modules/',
+                exclude: '/node_modules/'
             }
         ]
     },
     plugins: [
         // 清空文件插件
-        new CleanWebpackPlugin(
-            ['./dist/client/*'],
-            {
-                root: rootDir
-            }
-        ),
+        new CleanWebpackPlugin(['./dist/client/*'], {
+            root: rootDir
+        }),
         // html打包
         new HtmlPlugin({
             // 启用hash
@@ -152,14 +150,14 @@ const client = {
         }),
         // css分离插件
         new MiniCssExtractPlugin({
-            filename: "[name].css",
-            chunkFilename: "[id].css"
+            filename: '[name].css',
+            chunkFilename: '[id].css'
         }),
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: JSON.stringify('production'),
                 PORT: JSON.stringify('3000'),
-                IP: JSON.stringify('localhost'),
+                IP: JSON.stringify('localhost')
             }
         })
     ]

@@ -13,12 +13,11 @@ class HttpUtil {
         // 检测是否把域名带过来了
         options.url = /^http(s)?:\/\//.test(options.url) ? options.url : path.baseUrl + options.url;
 
-        const json = {
-        }; // 默认参数
+        const json = {}; // 默认参数
         const param = Object.assign({}, json, options.param); // 参数
         const spin = options.spin; // 是否显示loading，默认不显示
-        const errorToast = options.errorToast === undefined ? true : options.errorToast; // 是否显示错误警告，默认弹出
-        const successToast = options.successToast; // 是否显示成功警告
+        // const errorToast = options.errorToast === undefined ? true : options.errorToast; // 是否显示错误警告，默认弹出
+        // const successToast = options.successToast; // 是否显示成功警告
         if (spin) {
             if (HttpUtil.responseCount === undefined) {
                 HttpUtil.responseCount = 0;
@@ -106,7 +105,7 @@ class HttpUtil {
         }
         if (spin) {
             if (!HttpUtil.responseCount || !--HttpUtil.responseCount) {
-                console.log('关闭loading')
+                console.log('关闭loading');
             }
         }
 

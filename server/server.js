@@ -1,8 +1,8 @@
-const Koa = require('koa');
-const chalk = require('chalk');
 import path from 'path';
 import koaStatic from 'koa-static';
 import Loadable from 'react-loadable';
+const Koa = require('koa');
+const chalk = require('chalk');
 
 let restApi = require('./middlewares/restApi');
 let logger = require('./middlewares/logger');
@@ -38,19 +38,17 @@ app.use(router.allowedMethods());
 if (process.env.NODE_ENV === 'development' && module.hot) {
     module.hot.accept('./middlewares/router', () => {
         router = require('./middlewares/router');
-    })
+    });
     module.hot.accept('./middlewares/render', () => {
         render = require('./middlewares/render');
-    })
+    });
     module.hot.accept('./middlewares/restApi', () => {
         restApi = require('./middlewares/restApi');
-    })
+    });
     module.hot.accept('./middlewares/logger', () => {
         logger = require('./middlewares/logger');
-    })
+    });
 }
-
-
 
 const port = process.env.PORT;
 const host = process.env.IP;

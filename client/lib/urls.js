@@ -1,5 +1,5 @@
 const urls = {
     setHome: '/api/home',
-    setAbout: '/api/about',
-}
+    setAbout: '/api/about'
+};
 export default urls;

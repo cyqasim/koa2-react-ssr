@@ -19,7 +19,7 @@ import { hot } from 'react-hot-loader/index';
         )
 )
 class Home extends Component {
-    static getData(store) {
+    static getData() {
         return [homeAction.setHome, aboutAction.setAbout];
     }
     constructor(props) {

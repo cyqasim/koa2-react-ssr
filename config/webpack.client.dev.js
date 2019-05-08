@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const AssetsPlugin = require('assets-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const rootDir = path.resolve(__dirname, '../');
 
 const wds = {
@@ -19,25 +19,19 @@ module.exports = {
     context: rootDir,
     // 入口
     entry: {
-        client: [
-            `webpack-dev-server/client?${publicPath}`,
-            './client/root'
-        ],
+        client: [`webpack-dev-server/client?${publicPath}`, './client/root']
     },
     // 输出
     output: {
         path: rootDir + '/dist/client',
         filename: '[name].js',
-        chunkFilename: `[name].chunk.js`,
+        chunkFilename: '[name].chunk.js',
         // 构建后在html里的路径
-        publicPath: publicPath,
+        publicPath: publicPath
     },
     // 根据内容
     resolve: {
-        modules: [
-            'client',
-            'node_modules'
-        ],
+        modules: ['client', 'node_modules'],
         extensions: ['.js', '.jsx']
     },
     module: {
@@ -53,60 +47,61 @@ module.exports = {
                     {
                         loader: MiniCssExtractPlugin.loader
                     },
-                    {loader: 'css-loader', options: {
+                    {
+                        loader: 'css-loader',
+                        options: {
                             importLoaders: 1,
                             localIdentName: '[name].css'
-                        }},
-                    {loader: 'sass-loader'},
-                    {loader: 'postcss-loader'}
+                        }
+                    },
+                    { loader: 'sass-loader' },
+                    { loader: 'postcss-loader' }
                 ]
             },
             // 图片 loader
             {
                 // 匹配后缀
-                test:/\.(png|gif|jpe?g|svg)/,
-                use:[{
-                    // loader
-                    loader:'url-loader',
-                    options:{
-                        // 小于500B的文件打成Base64的格式，写入JS
-                        limit: 500,
-                        // 打包图片文件夹
-                        outputPath:'images',
-                        name: '[name].[ext]?[hash:6]',
+                test: /\.(png|gif|jpe?g|svg)/,
+                use: [
+                    {
+                        // loader
+                        loader: 'url-loader',
+                        options: {
+                            // 小于500B的文件打成Base64的格式，写入JS
+                            limit: 500,
+                            // 打包图片文件夹
+                            outputPath: 'images',
+                            name: '[name].[ext]?[hash:6]'
+                        }
+                    },
+                    {
+                        // 压缩图片
+                        loader: 'image-webpack-loader'
                     }
-                }, {
-                    // 压缩图片
-                    loader:'image-webpack-loader'
-                }]
+                ]
             },
             // html图片引用 loader
             {
                 test: /\.(htm|html)$/i,
-                use:[ 'html-withimg-loader']
+                use: ['html-withimg-loader']
             },
             // js babel loader
             {
-                test:/\.(jsx|js)$/,
-                include: [
-                    rootDir + '/client',
-                ],
-                use:{
-                    loader:'babel-loader'
+                test: /\.(jsx|js)$/,
+                include: [rootDir + '/client'],
+                use: {
+                    loader: 'babel-loader'
                 },
                 // 忽略文件
-                exclude: '/node_modules/',
+                exclude: '/node_modules/'
             }
         ]
     },
     plugins: [
         // 清空文件插件
-        new CleanWebpackPlugin(
-            ['./dist/client/*'],
-            {
-                root: rootDir
-            }
-        ),
+        new CleanWebpackPlugin(['./dist/client/*'], {
+            root: rootDir
+        }),
         // 代码分割
         new webpack.optimize.SplitChunksPlugin({
             // 分割模式 all-全部 async-按需 initial-初始
@@ -159,8 +154,8 @@ module.exports = {
         }),
         // css分离插件
         new MiniCssExtractPlugin({
-            filename: "[name].css",
-            chunkFilename: "[id].css"
+            filename: '[name].css',
+            chunkFilename: '[id].css'
         }),
         // 热替换插件
         new webpack.HotModuleReplacementPlugin(),
@@ -168,18 +163,18 @@ module.exports = {
             'process.env': {
                 NODE_ENV: JSON.stringify('development'),
                 PORT: JSON.stringify('3000'),
-                IP: JSON.stringify('localhost'),
+                IP: JSON.stringify('localhost')
             }
         })
     ],
     devServer: {
-        publicPath: '/',  // 资源文件路径(相对于域名 http://[hostname]:[port]/)
-        hot: true,    // 热替换
-        hotOnly: true,    // 在没有页面刷新的情况下启用热模块替换
-        quiet: false,     // 是否不显示错误警告
-        noInfo: true,    // 不显示打包信息
-        headers: { 'Access-Control-Allow-Origin': '*' },  // 响应头
-        host: wds.hostname,   // 域名
-        port: wds.port    // 端口
-    },
+        publicPath: '/', // 资源文件路径(相对于域名 http://[hostname]:[port]/)
+        hot: true, // 热替换
+        hotOnly: true, // 在没有页面刷新的情况下启用热模块替换
+        quiet: false, // 是否不显示错误警告
+        noInfo: true, // 不显示打包信息
+        headers: { 'Access-Control-Allow-Origin': '*' }, // 响应头
+        host: wds.hostname, // 域名
+        port: wds.port // 端口
+    }
 };

@@ -3,9 +3,9 @@ const api = async (ctx, next) => {
         city: '北京',
         date: '12',
         high: '34',
-        fx:  '56',
+        fx: '56',
         low: '78'
     });
-}
+};
 
 export default api;
