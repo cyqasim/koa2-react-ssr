@@ -3,7 +3,7 @@ import urls from '../../lib/urls';
 
 export const SET_HOME = 'SET_HOME';
 
-export const setHome = (data) => {
+export const setHome = () => {
     return dispatch => {
         return HttpUtil.http(
             {

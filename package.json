@@ -89,12 +89,7 @@
   },
   "lint-staged": {
     "linters": {
-      "**/*.{js,scss}": [
-        "./node_modules/.bin/prettier --write",
-        "./node_modules/.bin/eslint --fix",
-        "git add"
-      ],
-      "*.{js,scss}": [
+      "./client/**/*.{js,scss}": [
         "./node_modules/.bin/prettier --write",
         "./node_modules/.bin/eslint --fix",
         "git add"

@@ -3,7 +3,7 @@ import urls from '../../lib/urls';
 
 export const SET_ABOUT = 'SET_ABOUT';
 
-export const setAbout = (data) => {
+export const setAbout = () => {
     return dispatch => {
         return HttpUtil.http(
             {
