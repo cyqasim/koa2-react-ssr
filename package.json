@@ -93,6 +93,11 @@
         "./node_modules/.bin/prettier --write",
         "./node_modules/.bin/eslint --fix",
         "git add"
+      ],
+      "*.{js,scss}": [
+        "./node_modules/.bin/prettier --write",
+        "./node_modules/.bin/eslint --fix",
+        "git add"
       ]
     },
     "ignore": [
