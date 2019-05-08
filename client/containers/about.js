@@ -1,27 +1,19 @@
 import React, { Component } from 'react';
-import {connect} from "react-redux";
+import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as aboutAction from "../redux/actions/aboutAction";
 
 @connect(
     state => ({
         aboutReducer: state.aboutReducer
     }),
-    dispatch =>
-        bindActionCreators(
-            {},
-            dispatch
-        )
+    dispatch => bindActionCreators({}, dispatch)
 )
-export default class Home extends Component {
-    constructor () {
-        super();
-    }
-    render () {
-        const {city, date, fx, high, low} = this.props.aboutReducer.data;
+class Home extends Component {
+    render() {
+        const { city, date, fx, high, low } = this.props.aboutReducer.data;
 
         return (
-            <div className='home'>
+            <div className="home">
                 <p>城市：{city}</p>
                 <p>日期：{date}</p>
                 <p>风向：{fx}</p>
@@ -31,3 +23,4 @@ export default class Home extends Component {
         );
     }
 }
+export default Home;
