@@ -5,8 +5,8 @@ const host = process.env.IP;
  */
 let path = {};
 if (process.env.NODE_ENV === 'development') {
-    path.baseUrl = `http://${host}:${port}`
+    path.baseUrl = `http://${host}:${port}`;
 } else {
-    path.baseUrl = `http://${host}:${port}`
+    path.baseUrl = `http://${host}:${port}`;
 }
 export default path;
