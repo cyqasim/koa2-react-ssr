@@ -63,6 +63,7 @@
     "file-loader": "^2.0.0",
     "html-webpack-plugin": "^3.2.0",
     "html-withimg-loader": "^0.1.16",
+    "husky": "^2.2.0",
     "ignore-loader": "^0.1.2",
     "image-webpack-loader": "^4.6.0",
     "isomorphic-style-loader": "^5.0.1",
@@ -80,6 +81,19 @@
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.8",
     "webpack-node-externals": "^1.7.2"
+  },
+  "lint-staged": {
+    "linters": {
+      "./client/**/*.{js,scss}": [
+        "./node_modules/.bin/prettier --write",
+        "./node_modules/.bin/eslint --fix",
+        "git add"
+      ]
+    },
+    "ignore": [
+      ".idea/**",
+      "node_modules/**"
+    ]
   },
   "author": "lance wu",
   "license": "ISC"

@@ -1,10 +1,5 @@
-import React from 'react';
 import Loading from '../components/loading';
-// import HomeContainer from '../containers/home';
-// import AboutContainer from '../containers/about';
-
 import Loadable from 'react-loadable';
-
 
 /**
  * 路由配置 异步加载
@@ -19,7 +14,6 @@ const AboutComponent = Loadable({
     loading: Loading,
     modules: ['../containers/about']
 });
-
 
 const router = [
     { path: '/', component: HomeComponent, exact: true },
