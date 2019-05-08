@@ -45,6 +45,7 @@ module.exports = {
         'no-trailing-spaces': [0], // 不允许在语句后存在多余的空格
         camelcase: [2], // 驼峰命名（建议打开）
         'space-before-function-paren': [0], // 函数名称后面空格
+        'no-class-assign': [0],
         /** ********************* react custom start *********************/
         'react/display-name': [0],
         'react/jsx-indent': [0], // jsx缩进
