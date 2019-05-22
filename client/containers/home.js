@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as homeAction from '../redux/actions/homeAction';
 import * as aboutAction from '../redux/actions/aboutAction';
-import { hot } from 'react-hot-loader/index';
 
 @connect(
     state => ({
@@ -53,6 +52,5 @@ class Home extends Component {
         );
     }
 }
-
 
 export default Home;
