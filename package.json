@@ -82,24 +82,24 @@
     "webpack-dev-server": "^3.1.8",
     "webpack-node-externals": "^1.7.2"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "linters": {
-      "*.{js,scss}": [
-        "./node_modules/.bin/prettier --write",
-        "./node_modules/.bin/eslint --fix",
-        "git add"
-      ]
-    },
-    "ignore": [
-      ".idea/**",
-      "node_modules/**"
-    ]
-  },
+//  "husky": {
+//    "hooks": {
+//      "pre-commit": "lint-staged"
+//    }
+//  },
+//  "lint-staged": {
+//    "linters": {
+//      "*.{js,scss}": [
+//        "./node_modules/.bin/prettier --write",
+//        "./node_modules/.bin/eslint --fix",
+//        "git add"
+//      ]
+//    },
+//    "ignore": [
+//      ".idea/**",
+//      "node_modules/**"
+//    ]
+//  },
   "author": "lance wu",
   "license": "ISC"
 }

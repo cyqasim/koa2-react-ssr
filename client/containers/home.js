@@ -54,8 +54,5 @@ class Home extends Component {
     }
 }
 
-if (module.hot) {
-    Home = hot(module)(Home);
-}
 
 export default Home;
