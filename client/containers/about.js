@@ -13,7 +13,7 @@ class Home extends Component {
         const { city, date, fx, high, low } = this.props.aboutReducer.data;
 
         return (
-            <div className="home">
+            <div className="about page">
                 <p>城市：{city}</p>
                 <p>日期：{date}</p>
                 <p>风向：{fx}</p>

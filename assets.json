@@ -6,7 +6,7 @@
     "js": "http://localhost:8088/client.chunk.js"
   },
   "styles": {
-    "css": "http://localhost:8088/2.css",
+    "css": "http://localhost:8088/1.css",
     "js": "http://localhost:8088/styles.chunk.js"
   },
   "vendor": {
@@ -16,10 +16,15 @@
     "png": "http://localhost:8088/images/favicon.png?71bdc2",
     "ico": "http://localhost:8088/favicon.ico",
     "html": "http://localhost:8088/index.html",
-    "json": "http://localhost:8088/757d9a335203be5d0bec.hot-update.json",
+    "json": "http://localhost:8088/70a2fcac37aa86782191.hot-update.json",
     "js": [
       "http://localhost:8088/4.chunk.js",
-      "http://localhost:8088/5.chunk.js"
-    ]
+      "http://localhost:8088/5.chunk.js",
+      "http://localhost:8088/6.chunk.js"
+    ],
+    "mp4": "http://localhost:8088/0c9d73525d6a717c65d9a72bf86dd8a2.mp4",
+    "jpg": "http://localhost:8088/images/background_cover.jpg?2ba065",
+    "woff2": "http://localhost:8088/images/icofont.woff2?50a4ab",
+    "woff": "http://localhost:8088/images/icofont.woff?f6ab04"
   }
 }

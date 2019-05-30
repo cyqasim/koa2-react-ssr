@@ -1,8 +1,9 @@
 import path from 'path';
 import koaStatic from 'koa-static';
 import Loadable from 'react-loadable';
-const Koa = require('koa');
-const chalk = require('chalk');
+import Koa from 'koa';
+import chalk from 'chalk';
+import bodyParser from 'koa-bodyparser';
 
 let restApi = require('./middlewares/restApi');
 let logger = require('./middlewares/logger');
@@ -11,6 +12,8 @@ let router = require('./middlewares/router');
 let views = require('./middlewares/views');
 
 const app = new Koa();
+
+app.use(bodyParser());
 
 app.use(async (ctx, next) => {
     await restApi(ctx, next);

@@ -5,6 +5,7 @@ export const SET_HOME = 'SET_HOME';
 
 export const setHome = () => {
     return dispatch => {
+        console.log('xkxkxkxk')
         return HttpUtil.http(
             {
                 url: urls.setHome,

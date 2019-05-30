@@ -29,25 +29,26 @@ async function render(ctx, next) {
         const store = configureStore();
         // 存放promise请求集合
         const promises = [];
-        const component = await route.component.preload();
-        // 客户端初始化请求集合
-        const fetchArr =
-            typeof component.default.WrappedComponent.getData === 'function'
-                ? component.default.WrappedComponent.getData()
-                : [];
-        if (fetchArr && fetchArr.length > 0) {
-            fetchArr.map(f => {
-                // 遍历客户端请求集合，存到promise请求集合
-                const promise = new Promise(resolve => {
-                    store
-                        .dispatch(f())
-                        .then(resolve)
-                        .catch(resolve);
+        if (route.component.preload) {
+            const component = await route.component.preload();
+            // 客户端初始化请求集合
+            const fetchArr =
+                typeof component.default.WrappedComponent.getData === 'function'
+                    ? component.default.WrappedComponent.getData()
+                    : [];
+            if (fetchArr && fetchArr.length > 0) {
+                fetchArr.map(f => {
+                    // 遍历客户端请求集合，存到promise请求集合
+                    const promise = new Promise(resolve => {
+                        store
+                            .dispatch(f())
+                            .then(resolve)
+                            .catch(resolve);
+                    });
+                    promises.push(promise);
                 });
-                promises.push(promise);
-            });
+            }
         }
-
         // 阻塞 等待所有请求完成后执行渲染
         await Promise.all(promises)
             .then(() => {

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as homeAction from '../redux/actions/homeAction';
-import * as aboutAction from '../redux/actions/aboutAction';
+import * as homeAction from '../../redux/actions/homeAction';
+import * as aboutAction from '../../redux/actions/aboutAction';
 import { hot } from 'react-hot-loader/index';
-import urls from "../lib/urls";
-import {SET_HOME} from "../redux/actions/homeAction";
-import HttpUtil from "../lib/http";
+import urls from '../../lib/urls';
+import './main.scss';
+import HttpUtil from '../../lib/http';
 
 @connect(
     state => ({
@@ -21,28 +21,26 @@ import HttpUtil from "../lib/http";
             dispatch
         )
 )
-class Home extends Component {
-    static getData() {
-        return [homeAction.setHome, aboutAction.setAbout];
-    }
+class LoginContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            showLogin: false
         };
-    }
-    componentDidMount() {
-        if (!this.props.homeReducer.data.city) {
-            console.log('初始化没数据，加载');
-            this.props.setHome();
-        }
     }
     onPress = () => {
         console.log('帮about加载');
-        this.props.setAbout();
+        // this.props.setAbout();
     };
-    onInputUsername = (e) => {
+    clickLogin = () => {
+        console.log('11')
+        this.setState({
+            showLogin: true
+        });
+    }
+    onInputUsername = e => {
         this.setState({
             username: e.target.value
         });
@@ -70,30 +68,25 @@ class Home extends Component {
                 console.log(error);
             }
         );
-    }
+    };
     render() {
         const { city, date, fx, high, low } = this.props.homeReducer.data;
+        const { showLogin } = this.state;
         return (
-            <div className="home page">
-                <p>城市：{city}</p>
-                <p>日期：{date}</p>
-                <p>风向：{fx}</p>
-                <p>最高温度：{high}</p>
-                <p>最低温度：{low}</p>
-                <p>
-                    <img src={require('../images/favicon.png')} />
-                </p>
-                <div onClick={this.onPress}>Actions</div>
-                <input type="text" onChange={this.onInputUsername} />
-                <input type="text" onChange={this.onInputPassword} />
-                <div onClick={this.onLogin}>登陆</div>
+            <div className="main-wrap">
+                <div className="main-background">
+                    <video muted loop autoPlay className="background-video" ref={'video'}>
+                        <source src={require('../../static/main_background.mp4')} type="video/mp4" />
+                    </video>
+                </div>
+                <div className="main-login" onClick={this.clickLogin}>
+                    <span>sign</span>
+                </div>
             </div>
         );
     }
 }
-
 if (module.hot) {
-    Home = hot(module)(Home);
+    LoginContainer = hot(module)(LoginContainer);
 }
-
-export default Home;
+export default LoginContainer;

@@ -12,7 +12,6 @@ class HttpUtil {
         options.fetchTime = options.fetchTime || HttpUtil.fetchTime;
         // 检测是否把域名带过来了
         options.url = /^http(s)?:\/\//.test(options.url) ? options.url : path.baseUrl + options.url;
-
         const json = {}; // 默认参数
         const param = Object.assign({}, json, options.param); // 参数
         const spin = options.spin; // 是否显示loading，默认不显示
@@ -77,7 +76,7 @@ class HttpUtil {
                         ...options.headers
                     },
                     // withCredentials: true,
-                    params: JSON.stringify(param),
+                    data: param,
                     timeout: options.fetchTime
                 }).then(res => {
                     if (res.status === 200) {

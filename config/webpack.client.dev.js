@@ -61,7 +61,7 @@ module.exports = {
             // 图片 loader
             {
                 // 匹配后缀
-                test: /\.(png|gif|jpe?g|svg)/,
+                test: /\.(png|gif|jpe?g|svg|woff|woff2|ttf|eot)/,
                 use: [
                     {
                         // loader
@@ -94,6 +94,10 @@ module.exports = {
                 },
                 // 忽略文件
                 exclude: '/node_modules/'
+            },
+            {
+                test: /\.(ogg|mp3|wav|mpe?g|mp4)$/i,
+                use: 'file-loader'
             }
         ]
     },

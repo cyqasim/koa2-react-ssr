@@ -58,6 +58,10 @@ module.exports = {
                         loader: require.resolve('babel-loader')
                     }
                 ]
+            },
+            {
+                test: /\.(ogg|mp3|wav|mpe?g|mp4)$/i,
+                use: 'file-loader'
             }
         ]
     },

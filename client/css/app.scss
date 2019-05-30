@@ -1,0 +1,91 @@
+#root, #app {
+  width: 100vw;
+  min-height: 100vh;
+  position: relative;
+}
+*{
+  box-sizing: border-box;
+}
+.nav{
+  z-index: 9999;
+  position: absolute;
+}
+.page {
+  width: 100vw;
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.page.page-enter > * {
+  opacity: 0;
+  transform: translate(0%, 30%);
+}
+.page.page-done > * {
+  animation-name: donePage;
+  animation-duration: 1.2s;
+  animation-timing-function: cubic-bezier(.2, .35, 0, .9);
+  animation-fill-mode: forwards;
+}
+.page.page-exit>* {
+  opacity: 1;
+  transform: translate(0%, 0%);
+}
+.page:after{
+  content: '';
+  width: 100vw;
+  height: 100vh;
+  background: #ff4545;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 96;
+  transform: translate(100%, 0%);
+}
+.page:before{
+  content: '';
+  width: 100vw;
+  height: 100vh;
+  background: #212121;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 97;
+  transform: translate(100%, 0%);
+}
+.page.page-enter:after{
+  animation-name: enterPage;
+  animation-duration: 1.2s;
+  animation-timing-function: cubic-bezier(.2, .35, 0, .9);
+  animation-fill-mode: forwards;
+}
+.page.page-enter:before{
+  animation-name: enterPage;
+  animation-duration: 1.4s;
+  animation-timing-function: cubic-bezier(.2, .35, 0, .9);
+  animation-fill-mode: forwards;
+  animation-delay: 0.2s;
+}
+
+@keyframes enterPage {
+  0% {
+    transform: translate(100%, 0%);
+  }
+  50% {
+    transform: translate(0%, 0%);
+  }
+  100% {
+    transform: translate(-100%, 0%);
+  }
+}
+
+@keyframes donePage {
+  0% {
+    opacity: 0;
+    transform: translate(0%, 30%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0%, 0%);
+  }
+}

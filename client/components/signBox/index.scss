@@ -1,0 +1,116 @@
+#gl-sign-btn{
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    transform: translate(50%, 50%);
+    border-radius: 50%;
+    .sign-btn{
+        width: 100px;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all .5s cubic-bezier(.2, .35, 0, .9);
+        border-radius: 50%;
+        font-size: 50px;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    .sign-btn.open{
+        background: #ff4545;
+        color: #ffffff;
+        i{
+            position: relative;
+            top: -22px;
+            left: -22px;
+            transform: rotate(120deg);
+        }
+    }
+    .sign-btn.close{
+        background: #ffffff;
+        color: #212121;
+        i{
+            position: relative;
+            top: -16px;
+            left: -16px;
+            transform: rotate(-45deg);
+        }
+    }
+    .sign-btn:hover{
+        transform: scale(1.2);
+    }
+}
+#gl-sign-btn.sign-open {
+    .sign-btn.close{
+        left: 0;
+        top: 0;
+    }
+    .sign-btn.open{
+        left: 100%;
+        top: 100%;
+    }
+}
+#gl-sign-btn.sign-close {
+    .sign-btn.open{
+        left: 0;
+        top: 0;
+
+    }
+    .sign-btn.close{
+        left: 100%;
+        top: 100%;
+
+    }
+}
+
+
+#gl-signBox-overlay {
+    background: #ff4545;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    transform: translate(50%, 50%);
+    border-radius: 50%;
+    z-index: 97;
+}
+#gl-signBox-overlay.show {
+    width: 100px;
+    height: 100px;
+    animation-name: showOverlay;
+    animation-duration: .8s;
+    animation-timing-function: cubic-bezier(.2, .35, 0, .9);
+    animation-fill-mode: forwards;
+}
+#gl-signBox-overlay.hide {
+    width: 300vw;
+    height: 300vh;
+    animation-name: hideOverlay;
+    animation-duration: .3s;
+    animation-timing-function: cubic-bezier(.2, .35, 0, .9);
+    animation-fill-mode: forwards;
+    animation-delay: 0.3s;
+}
+@keyframes showOverlay {
+    0% {
+        width: 100px;
+        height: 100px;
+    }
+    100% {
+        width: 300vw;
+        height: 300vh;
+    }
+}
+@keyframes hideOverlay {
+    0% {
+        width: 300vw;
+        height: 300vh;
+    }
+    100% {
+        width: 100px;
+        height: 100px;
+    }
+}
