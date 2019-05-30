@@ -15,9 +15,9 @@ class App extends Component {
             <div id="app">
                 <SignBtn />
                 <div className="nav">
-                <p>路由跳转</p>
-                <Link to="/">Home</Link>
-                <Link to="/about/1">About</Link>
+                    <p>路由跳转</p>
+                    <Link to="/">Home</Link>
+                    <Link to="/about/1">About</Link>
                 </div>
                 <Route
                     render={({ location }) => (

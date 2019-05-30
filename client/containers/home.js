@@ -4,9 +4,8 @@ import { bindActionCreators } from 'redux';
 import * as homeAction from '../redux/actions/homeAction';
 import * as aboutAction from '../redux/actions/aboutAction';
 import { hot } from 'react-hot-loader/index';
-import urls from "../lib/urls";
-import {SET_HOME} from "../redux/actions/homeAction";
-import HttpUtil from "../lib/http";
+import urls from '../lib/urls';
+import HttpUtil from '../lib/http';
 
 @connect(
     state => ({
@@ -42,7 +41,7 @@ class Home extends Component {
         console.log('帮about加载');
         this.props.setAbout();
     };
-    onInputUsername = (e) => {
+    onInputUsername = e => {
         this.setState({
             username: e.target.value
         });
@@ -70,7 +69,7 @@ class Home extends Component {
                 console.log(error);
             }
         );
-    }
+    };
     render() {
         const { city, date, fx, high, low } = this.props.homeReducer.data;
         return (

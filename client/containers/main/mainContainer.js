@@ -35,11 +35,11 @@ class LoginContainer extends Component {
         // this.props.setAbout();
     };
     clickLogin = () => {
-        console.log('11')
+        console.log('11');
         this.setState({
             showLogin: true
         });
-    }
+    };
     onInputUsername = e => {
         this.setState({
             username: e.target.value
@@ -70,8 +70,8 @@ class LoginContainer extends Component {
         );
     };
     render() {
-        const { city, date, fx, high, low } = this.props.homeReducer.data;
-        const { showLogin } = this.state;
+        // const { city, date, fx, high, low } = this.props.homeReducer.data;
+        // const { showLogin } = this.state;
         return (
             <div className="main-wrap">
                 <div className="main-background">
