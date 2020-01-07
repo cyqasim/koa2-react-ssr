@@ -1,0 +1,103 @@
+.navBar{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 0;
+  z-index: 999;
+  .wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .navBar-logo{
+      width: 40px;
+      margin-right: 20px;
+      img{
+        width: 100%;
+        height: auto;
+      }
+    }
+    .navBar-nav{
+      flex: 1;
+      display: flex;
+      justify-content: space-between;
+      .nav-left{
+        display: flex;
+        align-items: center;
+      }
+      .nav-right{
+        display: flex;
+        align-items: center;
+      }
+      .nav-name{
+        padding: 0;
+      }
+      .nav{
+        padding: 10px;
+        height: 40px;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        transition: all .2s cubic-bezier(.2, .35, 0, .9);
+        .nav-text{
+          font-weight: bold;
+          transition: all .2s cubic-bezier(.2, .35, 0, .9);
+          text-decoration-color: #74c947;
+          font-size: 13px;
+        }
+
+        .nav-icon{
+          width: 30px;
+          height: 30px;
+          border-radius: 100%;
+          border:1px solid #74c947;
+          background: #ffffff;
+          padding: 3px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-right: 4px;
+          transition: all .2s cubic-bezier(.2, .35, 0, .9);
+          overflow: hidden;
+          img{
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            display: block;
+          }
+        }
+      }
+      .nav.nav-btn{
+        padding: 10px 42px;
+        border-radius: 20px;
+        border: 1px solid #74c947;
+        margin-left: 30px;
+        .nav-text{
+          color: #74c947;
+        }
+      }
+      .nav:hover{
+        .nav-text{
+          color: #74c947;
+        }
+      }
+      .nav.nav-btn:hover{
+        background: #74c947;
+        .nav-text{
+          color: #ffffff;
+        }
+      }
+    }
+  }
+}
+.navBar.black{
+  .nav-text{
+    color: #363f41;
+  }
+
+}
+.navBar.white{
+  .nav-text{
+    color: #ffffff;
+  }
+}

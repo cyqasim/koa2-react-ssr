@@ -1,11 +1,15 @@
 import { combineReducers } from 'redux';
-import homeReducer from './homeReducer';
-import aboutReducer from './aboutReducer';
+import signReducer from './signReducer';
+import userReducer from './userReducer';
+import articleListReducer from './articleListReducer';
+import articleDetailReducer from './articleDetailReducer';
 
 // combineReducers方法是redux提供的 合并Reducer
 const reducers = combineReducers({
-    homeReducer,
-    aboutReducer
+    signReducer,
+    userReducer,
+    articleListReducer,
+    articleDetailReducer
 });
 
 export default reducers;

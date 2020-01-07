@@ -4,6 +4,7 @@ const postcssWriteSvg = require('postcss-write-svg');
 const postcssCssnext = require('postcss-cssnext');
 const postcssViewportUnits = require('postcss-viewport-units');
 const postcssFlexbugs = require('postcss-flexbugs-fixes');
+const autoprefixer = require('autoprefixer');
 
 module.exports = {
     plugins: [
@@ -21,7 +22,8 @@ module.exports = {
         postcssWriteSvg({
             utf8: false
         }),
-        postcssCssnext({})
+        autoprefixer({})
+        // postcssCssnext({})
         // postcssViewportUnits()
     ]
 };

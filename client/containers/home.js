@@ -1,28 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as homeAction from '../redux/actions/homeAction';
-import * as aboutAction from '../redux/actions/aboutAction';
+import * as homeAction from '../redux/actions/userAction';
 import { hot } from 'react-hot-loader/index';
 import urls from '../lib/urls';
 import HttpUtil from '../lib/http';
 
 @connect(
-    state => ({
-        homeReducer: state.homeReducer
-    }),
+    state => ({}),
     dispatch =>
         bindActionCreators(
             {
-                setHome: homeAction.setHome,
-                setAbout: aboutAction.setAbout
+                setHome: homeAction.setHome
             },
             dispatch
         )
 )
 class Home extends Component {
     static getData() {
-        return [homeAction.setHome, aboutAction.setAbout];
+        return [homeAction.setHome];
     }
     constructor(props) {
         super(props);
@@ -31,12 +27,7 @@ class Home extends Component {
             password: ''
         };
     }
-    componentDidMount() {
-        if (!this.props.homeReducer.data.city) {
-            console.log('初始化没数据，加载');
-            this.props.setHome();
-        }
-    }
+    componentDidMount() {}
     onPress = () => {
         console.log('帮about加载');
         this.props.setAbout();
@@ -73,7 +64,7 @@ class Home extends Component {
     render() {
         const { city, date, fx, high, low } = this.props.homeReducer.data;
         return (
-            <div className="home page">
+            <div className="home">
                 <p>城市：{city}</p>
                 <p>日期：{date}</p>
                 <p>风向：{fx}</p>

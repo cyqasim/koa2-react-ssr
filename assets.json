@@ -13,18 +13,46 @@
     "js": "http://localhost:8088/vendor.chunk.js"
   },
   "": {
-    "png": "http://localhost:8088/images/favicon.png?71bdc2",
+    "png": [
+      "http://localhost:8088/images/address_icon.png?b1e40a",
+      "http://localhost:8088/images/article_icon.png?59fb4c",
+      "http://localhost:8088/images/close_icon.png?4cb1c9",
+      "http://localhost:8088/images/date_icon.png?59feeb",
+      "http://localhost:8088/images/edit_icon.png?21db79",
+      "http://localhost:8088/images/favicon.png?71bdc2",
+      "http://localhost:8088/images/login_box_bottom.png?9061f8",
+      "http://localhost:8088/images/login_box_top.png?4eabad",
+      "http://localhost:8088/images/logo.png?ff0054",
+      "http://localhost:8088/images/logo_bw.png?8a9ae8",
+      "http://localhost:8088/images/logo_w.png?d08b47",
+      "http://localhost:8088/images/man_icon.png?28a88c",
+      "http://localhost:8088/images/woman_icon.png?9a3032"
+    ],
     "ico": "http://localhost:8088/favicon.ico",
     "html": "http://localhost:8088/index.html",
-    "json": "http://localhost:8088/70a2fcac37aa86782191.hot-update.json",
+    "json": "http://localhost:8088/d7c5aa9867db9b1bb7b9.hot-update.json",
     "js": [
-      "http://localhost:8088/4.chunk.js",
+      "http://localhost:8088/10.chunk.js",
+      "http://localhost:8088/11.chunk.js",
+      "http://localhost:8088/12.chunk.js",
+      "http://localhost:8088/13.chunk.js",
+      "http://localhost:8088/14.chunk.js",
+      "http://localhost:8088/15.chunk.js",
+      "http://localhost:8088/16.chunk.js",
       "http://localhost:8088/5.chunk.js",
-      "http://localhost:8088/6.chunk.js"
+      "http://localhost:8088/6.chunk.js",
+      "http://localhost:8088/7.chunk.js",
+      "http://localhost:8088/8.chunk.js",
+      "http://localhost:8088/9.chunk.js",
+      "http://localhost:8088/8.chunk.js"
     ],
     "mp4": "http://localhost:8088/0c9d73525d6a717c65d9a72bf86dd8a2.mp4",
     "jpg": "http://localhost:8088/images/background_cover.jpg?2ba065",
     "woff2": "http://localhost:8088/images/icofont.woff2?50a4ab",
-    "woff": "http://localhost:8088/images/icofont.woff?f6ab04"
+    "woff": "http://localhost:8088/images/icofont.woff?f6ab04",
+    "gif": "http://localhost:8088/images/ajax-loader.gif?68b0c4",
+    "eot": "http://localhost:8088/images/slick.eot?ced611",
+    "svg": "http://localhost:8088/images/slick.svg?e16e9d",
+    "ttf": "http://localhost:8088/images/slick.ttf?d41f55"
   }
 }

@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { Switch, Route, Redirect } from 'react-router';
 
-function renderRoutes(routes, indexPath = null) {
+function renderRoutes(routes, location, token, indexPath = null) {
     return (
-        <Switch>
+        <Switch location={location}>
+            {indexPath ? <Redirect from={'/'} to={indexPath} exact /> : null}
             {routes.map((route, i) => {
                 return (
                     <Route
@@ -12,12 +13,15 @@ function renderRoutes(routes, indexPath = null) {
                         exact={route.exact}
                         strict={route.strict}
                         render={props => {
-                            return <route.component {...props} route={route} />;
+                            if (!route.auth || (route.auth && token)) {
+                                return <route.component {...props} route={route} />;
+                            } else {
+                                return <Redirect from={route.path} to={'/login'} exact />;
+                            }
                         }}
                     />
                 );
             })}
-            {indexPath ? <Redirect from={'/'} to={indexPath} /> : null}
         </Switch>
     );
 }

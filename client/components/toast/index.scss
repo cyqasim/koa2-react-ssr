@@ -1,0 +1,112 @@
+#toast-wrap {
+  position: fixed;
+  right: 40px;
+  bottom: 20px;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.toast-box {
+  margin-bottom: 10px;
+  .toast{
+    display: flex;
+    align-items: center;
+    float: right;
+    height: 50px;
+    background: #ffffff;
+    border-top: 2px solid #74c947;
+    box-shadow: 0 3px 6px 2px rgba(0,0,0,.15);
+    border-radius: 4px;
+    color: #363f41;
+    transform: translate(20%, 0%);
+    opacity: 0;
+    visibility: hidden;
+    .toast-icon{
+      width: 50px;
+      padding: 0 10px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      i{
+        font-size: 20px;
+        color: #ffd33b;
+      }
+    }
+    .toast-text{
+      max-width: 200px;
+      height: 100%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      font-size: 13px;
+      span{
+        padding-left: 10px;
+        margin-right: -200px;
+      }
+    }
+  }
+}
+.toast-box.show{
+  .toast{
+    animation-name: showToast;
+    animation-duration: 0.3s;
+    animation-timing-function: cubic-bezier(.2, .35, 0, .9);
+    animation-fill-mode: forwards;
+    .toast-text{
+      span{
+        animation-name: showText;
+        animation-duration: 0.3s;
+        animation-timing-function: cubic-bezier(.2, .35, 0, .9);
+        animation-fill-mode: forwards;
+        animation-delay: 0.2s;
+      }
+    }
+  }
+}
+.toast-box.hide{
+  .toast{
+    animation-name: hideToast;
+    animation-duration: 0.5s;
+    animation-timing-function: cubic-bezier(.2, .35, 0, .9);
+    animation-fill-mode: forwards;
+    .toast-text{
+      span{
+        margin-right: 0;
+      }
+    }
+  }
+}
+@keyframes showToast {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(20%, 0%);
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0%, 0%);
+  }
+}
+@keyframes hideToast {
+  0% {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0%, 0%);
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(20%, 0%);
+  }
+}
+@keyframes showText {
+  0% {
+    margin-right: -200px;
+  }
+  100% {
+    margin-right: 0;
+  }
+}

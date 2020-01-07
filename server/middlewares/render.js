@@ -5,6 +5,10 @@ import { Provider } from 'react-redux';
 import routes from '../../client/routes/index';
 import App from '../../client/app';
 import configureStore from '../../client/redux/store/store';
+import HttpUtil from '../../client/lib/http';
+import { JWT_SECRET } from '../jwt.config';
+import jwt from 'jsonwebtoken';
+import { StrUtil } from '../../client/lib/public';
 const assets = require('../../assets.json');
 
 async function render(ctx, next) {
@@ -25,17 +29,40 @@ async function render(ctx, next) {
     }
     // 匹配成功 拦截请求 直接渲染前端路由
     if (route) {
+        let token = 'null';
+        if (!StrUtil.isEmpty(ctx.cookies.get('user_token'))) {
+            token = ctx.cookies.get('user_token');
+        } else if (!StrUtil.isEmpty(ctx.header.authorization)) {
+            token = ctx.header.authorization;
+        }
+        if (route.auth) {
+            let jwtToken = 'null';
+            if (token !== 'null') {
+                jwtToken = jwt.verify(token, JWT_SECRET);
+            }
+            if (!jwtToken || jwtToken.exp * 1000 < new Date().getTime()) {
+                if (ctx.url !== '/') {
+                    ctx.response.redirect('/');
+                    return;
+                }
+            }
+        }
+        HttpUtil.setToken(token);
         // 初始化store 不同于客户端渲染 服务端需要每个链接有单独的store
-        const store = configureStore();
+        const store = configureStore({
+            signReducer: {
+                token,
+                username: ctx.cookies.get('user_name'),
+                profile: ctx.cookies.get('user_profile')
+            }
+        });
         // 存放promise请求集合
         const promises = [];
         if (route.component.preload) {
             const component = await route.component.preload();
+            const com = component.default.WrappedComponent || component.default;
             // 客户端初始化请求集合
-            const fetchArr =
-                typeof component.default.WrappedComponent.getData === 'function'
-                    ? component.default.WrappedComponent.getData()
-                    : [];
+            const fetchArr = typeof com.getData === 'function' ? com.getData() : [];
             if (fetchArr && fetchArr.length > 0) {
                 fetchArr.map(f => {
                     // 遍历客户端请求集合，存到promise请求集合
@@ -57,7 +84,6 @@ async function render(ctx, next) {
             .catch(err => {
                 console.log('数据加载 error:', err);
             });
-
         // 渲染使用nunjucks模板
         // renderToString方法把react转换html元素 服务器渲染
         // 使用用于服务端渲染提供的StaticRouter组件包裹路由组件

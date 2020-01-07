@@ -1,0 +1,231 @@
+/* Slider */
+.slick-slider {
+  position: relative;
+
+  display: block;
+  box-sizing: border-box;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+  -ms-touch-action: pan-y;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.slick-list {
+  position: relative;
+
+  display: block;
+  overflow: hidden;
+
+  margin: 0;
+  padding: 0;
+}
+
+.slick-list:focus {
+  outline: none;
+}
+
+.slick-list.dragging {
+  cursor: pointer;
+  cursor: hand;
+}
+
+.slick-slider .slick-track,
+.slick-slider .slick-list {
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.slick-track {
+  position: relative;
+  top: 0;
+  left: 0;
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.slick-track:before,
+.slick-track:after {
+  display: table;
+
+  content: '';
+}
+
+.slick-track:after {
+  clear: both;
+}
+
+
+.slick-slide {
+  display: none;
+  float: left;
+
+  height: 100%;
+  min-height: 1px;
+}
+
+[dir='rtl'] .slick-slide {
+  float: right;
+}
+
+.slick-slide img {
+  display: block;
+}
+
+.slick-slide.slick-loading img {
+  display: none;
+}
+
+.slick-slide.dragging img {
+  pointer-events: none;
+}
+
+.slick-initialized .slick-slide {
+  display: block;
+}
+
+/* Dots */
+.slick-dots {
+  position: absolute;
+  top: 5px;
+  left: 0;
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  z-index: 3;
+}
+
+.slick-dots li {
+  position: relative;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin: 0 5px;
+  padding: 0;
+  border: 1px solid rgba(255,255,255,.6);
+  cursor: pointer;
+}
+
+.slick-dots li button {
+  font-size: 12px;
+  line-height: 0;
+  color: rgba(255,255,255,.6);
+  display: block;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  cursor: pointer;
+  border: 0;
+  outline: none;
+  background: transparent;
+}
+
+.slick-dots li.slick-active button {
+  background: rgba(255,255,255,.6);
+}
+
+.home-slider {
+  width: 100%;
+  height: 412px;
+  display: flex;
+  background: #ffffff;
+  padding: 6px;
+  .slider-left {
+    width: 75%;
+    height: 100%;
+  }
+  .slider-right {
+    width: 25%;
+    height: 100%;
+    background: #000000;
+    .slider-list{
+      height:80px;
+      padding: 10px;
+      display: flex;
+      border-bottom: 1px solid #3a3a3a;
+      cursor: pointer;
+      .item-pic{
+        width: 80px;
+        height: 60px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+      }
+      .item-label{
+        flex: 1;
+        font-size: 16px;
+        line-height: 20px;
+        height: 40px;
+        color: #ffffff;
+        margin-left: 10px;
+      }
+    }
+    .slider-list.active{
+      background: #ffffff;
+      .item-label{
+        color: #000000;
+      }
+    }
+  }
+  .slick-item {
+    width: 100%;
+    height: 400px;
+    .item-box {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+      .item-pic {
+        height: 100%;
+        width: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+      }
+      .item-label {
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding: 10px;
+        color: #ffffff;
+        z-index: 2;
+      }
+    }
+    .overlay{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+    }
+    .overlay:after{
+      content: '';
+      width: 100%;
+      height: 60px;
+      position: absolute;
+      top: 0;
+      background: linear-gradient(to top,transparent 0,rgba(0,0,0,.4) 100%);
+    }
+    .overlay:before{
+      content: '';
+      width: 100%;
+      height: 100px;
+      position: absolute;
+      bottom: 0;
+      background: linear-gradient(to bottom,transparent 0,rgba(0,0,0,.6) 100%);
+    }
+  }
+}

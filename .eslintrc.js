@@ -55,7 +55,7 @@ module.exports = {
         'react/no-children-prop': [0], // 关闭children不能作为props
         'react/no-string-refs': [0], // refs字符串'react/no-did-update-set-state': [0], // 禁止在 componentDidUpdate 里面使用 setState
         'react/no-deprecated': [0],
-        'react/jsx-no-bind': [0], // JSX上不允许添加bind，避免资源浪费（建议新项目打开这个）
+        'react/jsx-no-bind': [2], // JSX上不允许添加bind，避免资源浪费（建议新项目打开这个）
         'jsx-quotes': [0], // jsx属性引号
         'no-mixed-operators': [0], // 禁止混合使用不同的操作符
         'standard/no-callback-literal': [0], // Enforce callbacks always called with Node.js-style error first

@@ -1,73 +1,100 @@
+html{
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+}
+body{
+  min-width: 1060px;
+  overflow-x: scroll;
+}
 #root, #app {
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   position: relative;
 }
 *{
   box-sizing: border-box;
 }
-.nav{
-  z-index: 9999;
-  position: absolute;
-}
-.page {
-  width: 100vw;
+.app-page {
+  width: 100%;
   min-height: 100vh;
   position: absolute;
   top: 0;
   left: 0;
 }
-.page.page-enter > * {
+.app-page>div{
   opacity: 0;
-  transform: translate(0%, 30%);
+  transition: opacity .3s cubic-bezier(.2, .35, 0, .9);
 }
-.page.page-done > * {
-  animation-name: donePage;
-  animation-duration: 1.2s;
+.app-page.app-page-enter>div, .app-page.app-round-enter>div{
+  animation-name: enterPage;
+  animation-duration: .1s;
   animation-timing-function: cubic-bezier(.2, .35, 0, .9);
   animation-fill-mode: forwards;
+  animation-delay: .4s;
 }
-.page.page-exit>* {
+@keyframes enterPage {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.app-page.app-page-enter-done>div, .app-page.app-round-enter-done>div{
   opacity: 1;
-  transform: translate(0%, 0%);
 }
-.page:after{
+.app-page.app-page-exit>div, .app-page.app-round-exit>div{
+  opacity: 1;
+  animation-name: exitPage;
+  animation-duration: .1s;
+  animation-timing-function: cubic-bezier(.2, .35, 0, .9);
+  animation-fill-mode: forwards;
+  animation-delay: .4s;
+}
+@keyframes exitPage {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.app-page.app-page-enter:after{
   content: '';
   width: 100vw;
   height: 100vh;
-  background: #ff4545;
+  background: #74c947;
   position: fixed;
   left: 0;
   top: 0;
   z-index: 96;
   transform: translate(100%, 0%);
 }
-.page:before{
+.app-page.app-page-enter:before{
   content: '';
   width: 100vw;
   height: 100vh;
-  background: #212121;
+  background: #363f41;
   position: fixed;
   left: 0;
   top: 0;
   z-index: 97;
   transform: translate(100%, 0%);
 }
-.page.page-enter:after{
-  animation-name: enterPage;
-  animation-duration: 1.2s;
+.app-page.app-page-enter:after{
+  animation-name: transitionPage;
+  animation-duration: .8s;
   animation-timing-function: cubic-bezier(.2, .35, 0, .9);
   animation-fill-mode: forwards;
 }
-.page.page-enter:before{
-  animation-name: enterPage;
-  animation-duration: 1.4s;
+.app-page.app-page-enter:before{
+  animation-name: transitionPage;
+  animation-duration: 1s;
   animation-timing-function: cubic-bezier(.2, .35, 0, .9);
   animation-fill-mode: forwards;
   animation-delay: 0.2s;
 }
-
-@keyframes enterPage {
+@keyframes transitionPage {
   0% {
     transform: translate(100%, 0%);
   }
@@ -79,13 +106,99 @@
   }
 }
 
-@keyframes donePage {
+.app-page.app-round-enter:after{
+  content: '';
+  width: 100px;
+  height: 100px;
+  background: #74c947;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  z-index: 96;
+  transform: translate(50%, 50%);
+  border-radius: 50%;
+}
+
+.app-page.app-round-enter:after{
+  animation-name: transitionRound;
+  animation-duration: 1.3s;
+  animation-timing-function: cubic-bezier(.2, .35, 0, .9);
+  animation-fill-mode: forwards;
+}
+@keyframes transitionRound {
   0% {
-    opacity: 0;
-    transform: translate(0%, 30%);
+    width: 100px;
+    height: 100px;
   }
-  100% {
+  80% {
+    width: 300vw;
+    height: 300vh;
     opacity: 1;
-    transform: translate(0%, 0%);
+  }
+  100%{
+    width: 300vw;
+    height: 300vh;
+    opacity: 0;
   }
 }
+
+.fc-b1b1b1{
+  color: #b1b1b1;
+}
+.fc-cccccc{
+  color: #cccccc;
+}
+.fw-normal{
+  font-weight: normal;
+}
+.fw-bold{
+  font-weight: bold;
+}
+
+input {
+  border: 1px solid #ccc;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+input::-webkit-input-placeholder {
+  font-size: 14px;
+  color: #ccc;
+}
+
+input:focus{
+  border-color:#74c947;
+  outline: 0;
+  box-shadow: inset 0 1px 1px rgba(0, 172, 126,.075),0 0 8px rgba(81, 204, 38,.6)
+}
+.img{
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: auto;
+}
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.app-animation{
+  opacity: 0;
+  transform: translate(0%, 30%);
+  transition: all .5s cubic-bezier(.2, .35, 0, .9);
+}
+.app-page.app-page-enter-done .app-animation, .app-page.app-round-enter-done .app-animation {
+  opacity: 1;
+  transform: translate(0%, 0%);
+}
+
+
+/**
+#9a9fa0 灰色
+#363f41 黑色
+#85bf57
+
+background: linear-gradient(#74c947,#4bc459);
+background: linear-gradient(#68bb39,#3fb54d)
+**/
